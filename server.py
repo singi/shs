@@ -24,6 +24,10 @@ def poc():
 def test():
     return send_from_directory('.', 'test.js')
 
+@app.route("/test.html")
+def test_html():
+    return send_from_directory('.', 'test.html')
+
 if __name__ == '__main__':
     sslctx = ssl.SSLContext(ssl.PROTOCOL_TLS)
     sslctx.load_cert_chain(certfile="server.pem")
